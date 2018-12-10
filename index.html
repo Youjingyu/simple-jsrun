@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>js run</title>
+  <style>
+    textarea{
+      width: 100%;
+      max-height: 200px;
+      min-height: 80px;
+    }
+    iframe {
+      width: 100%;
+      height: 500px;
+    }
+    body {
+      margin: 10px;
+    }
+    textarea{
+      font-size: 18;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 75px;
+      height: 35px;
+      margin: 10px auto;
+      display: block;
+      color: #fff;
+      background-color: #409eff;
+      border-color: #409eff;
+      border-radius: 4px;
+      border: 1px solid #dcdfe6;
+      font-size: 14px;
+    }
+    button:focus {
+      outline: none;
+    }
+    h4 {
+      margin: 0
+    }
+  </style>
+</head>
+<body>
+  <textarea placeholder="HTML" id="h"></textarea>
+  <textarea placeholder="CSS" id="c"></textarea>
+  <textarea placeholder="JS" id="j"></textarea>
+  <button id="execute">执行</button>
+  <h4>执行结果</h4>
+  <iframe id="i"></iframe>
+  <script>
+    document.getElementById('execute').addEventListener('click', execute)
+    execute()
+    function execute () {
+      var srcDoc = h.value + '<style>' + c.value + '</style>'
+      srcDoc += '<script src="https://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/vconsole/3.0.0/vconsole.min.js"><\/script>'
+      srcDoc += '<script>new VConsole()<\/script>'
+      srcDoc += '<script>' + j.value + '<\/script>'
+      srcDoc += '<style>#__vconsole .vc-switch{top: .76923077em; bottom: auto}</style>'
+      i.srcdoc = srcDoc
+    }
+  </script>
+</body>
+</html>
